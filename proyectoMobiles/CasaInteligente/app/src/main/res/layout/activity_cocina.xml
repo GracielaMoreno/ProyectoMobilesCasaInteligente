@@ -8,24 +8,26 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_width="93dp"
+        android:layout_height="29dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="140dp"
         android:text="Cortina"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
+        android:layout_width="56dp"
+        android:layout_height="29dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="92dp"
         android:text="Foco"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -65,13 +67,13 @@
         android:id="@+id/imageCortina"
         android:layout_width="104dp"
         android:layout_height="111dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="108dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:onClick="abrirMenuCortina"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:srcCompat="@drawable/cortina" />
 </android.support.constraint.ConstraintLayout>

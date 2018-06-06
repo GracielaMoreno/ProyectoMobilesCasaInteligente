@@ -8,16 +8,17 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
+        android:layout_width="60dp"
+        android:layout_height="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="84dp"
         android:text="Foco"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView10"
         app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="234dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="234dp" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -52,15 +53,16 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_width="71dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Puerta"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView11"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="405dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="405dp" />
 
     <ImageView
         android:id="@+id/imageView11"
