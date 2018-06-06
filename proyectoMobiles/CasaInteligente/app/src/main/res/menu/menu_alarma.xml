@@ -2,8 +2,8 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Abrir" android:id="@+id/abrirCortinaCocina"/>
-    <item android:title="Cerrar" android:id="@+id/cerrarCortinaCocina"/>
+    <item android:title="Activar" android:id="@+id/activarAlarma"/>
+    <item android:title="Desactiva" android:id="@+id/desactivarAlarma"/>
 
 
 </menu>

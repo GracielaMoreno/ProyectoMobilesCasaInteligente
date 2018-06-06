@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView14"
         app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="163dp" />
+        tools:layout_editor_absoluteY="163dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView14"
@@ -25,6 +26,7 @@
         android:layout_marginEnd="64dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="88dp"
+        android:onClick="abrirMenuFocoSala"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView21"
@@ -37,11 +39,13 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Habitacion"
+        android:layout_marginTop="4dp"
+        android:text="Sala"
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.416" />
@@ -69,6 +73,7 @@
         android:layout_marginBottom="44dp"
         android:layout_marginEnd="44dp"
         android:layout_marginTop="8dp"
+        android:onClick="abrirPuertaSala"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView14"

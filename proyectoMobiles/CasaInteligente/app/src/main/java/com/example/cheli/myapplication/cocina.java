@@ -3,7 +3,6 @@ package com.example.cheli.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.PopupMenu;
 
 public class cocina extends AppCompatActivity {
@@ -38,7 +37,7 @@ public class cocina extends AppCompatActivity {
             }
             });
 
-                popupMenu.inflate(R.menu.menu_foco);
+                popupMenu.inflate(R.menu.menu_foco_cocina);
                 popupMenu.show();
         }
     }
