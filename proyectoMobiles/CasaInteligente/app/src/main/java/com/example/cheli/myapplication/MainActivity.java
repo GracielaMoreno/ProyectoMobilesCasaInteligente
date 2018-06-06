@@ -59,4 +59,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void pantallaMenus(View view){
+
+        Intent intent = new Intent(getApplicationContext(), cocina.class);
+        startActivity(intent);
+    }
+
 }
