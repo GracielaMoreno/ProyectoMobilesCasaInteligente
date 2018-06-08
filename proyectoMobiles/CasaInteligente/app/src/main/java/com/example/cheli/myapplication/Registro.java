@@ -23,8 +23,6 @@ public class Registro extends AppCompatActivity {
         verificacion=(EditText)findViewById(R.id.contrasena);
 
 
-
-
     }
 
     public void pantallaMenu(View view){

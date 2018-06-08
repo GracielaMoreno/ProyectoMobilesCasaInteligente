@@ -37,13 +37,7 @@ public class MainActivity extends AppCompatActivity {
         nombre=findViewById(R.id.editTextUsuario);
         contrasena=findViewById(R.id.editText2Password);
 
-        if(nombre.getText().toString().equals("caro") && contrasena.getText().toString().equals("123")){
-            Intent intent = new Intent(getApplicationContext(), Menu.class);
-            startActivity(intent);
-        }else
-        {
-            Toast.makeText(getApplicationContext(),"No registrado", Toast.LENGTH_LONG).show();
-        }
+
 
     }
 
@@ -79,8 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void pantallaMenus(View view){
 
-        Intent intent = new Intent(getApplicationContext(), Menu.class);
-        startActivity(intent);
+        if(nombre.getText().toString().equals("caro") && contrasena.getText().toString().equals("123")){
+            Intent intent = new Intent(getApplicationContext(), Menu.class);
+            startActivity(intent);
+        }else
+        {
+            Toast.makeText(getApplicationContext(),"No registrado", Toast.LENGTH_LONG).show();
+        }
     }
 
 }
