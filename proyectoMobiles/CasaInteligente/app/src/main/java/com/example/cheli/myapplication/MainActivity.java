@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -18,6 +19,8 @@ import Modelos.Persona;
 public class MainActivity extends AppCompatActivity {
     private GoogleApiClient googleApiClient;
     private final int CODERC = 9001;
+    EditText nombre, contrasena;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
                 logeoGmail();
             }
         });
+
+        nombre=findViewById(R.id.editTextUsuario);
+        contrasena=findViewById(R.id.editText2Password);
+
+        if(nombre.getText().toString().equals("caro") && contrasena.getText().toString().equals("123")){
+            Intent intent = new Intent(getApplicationContext(), Menu.class);
+            startActivity(intent);
+        }else
+        {
+            Toast.makeText(getApplicationContext(),"No registrado", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public void logeoGmail() {
