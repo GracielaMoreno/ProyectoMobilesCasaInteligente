@@ -23,6 +23,5 @@ public class bienvenido extends AppCompatActivity {
     public void pantallaRegistro(View view){
         Intent intent = new Intent(getApplicationContext(), Registro.class);
         startActivity(intent);
-
     }
 }

@@ -12,6 +12,7 @@ public class Persona {
         this.contrasena = contrasena;
     }
 
+
     public String getCodigo() {
         return codigo;
     }

@@ -13,6 +13,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import Modelos.Persona;
+
 public class MainActivity extends AppCompatActivity {
     private GoogleApiClient googleApiClient;
     private final int CODERC = 9001;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             if (result.isSuccess()) {
                 GoogleSignInAccount acc = result.getSignInAccount();
                 Intent intent = new Intent(getApplicationContext(), Menu.class);
+                Persona persona = new Persona(acc.getDisplayName(), acc.getEmail(), "+++");
                 startActivity(intent);
 
             } else {
