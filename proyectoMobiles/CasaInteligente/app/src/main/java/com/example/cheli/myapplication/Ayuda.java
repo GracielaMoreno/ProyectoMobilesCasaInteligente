@@ -9,6 +9,7 @@ import Service.ApiService;
 import retrofit2.Retrofit;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,7 +28,7 @@ public class Ayuda extends AppCompatActivity {
     ApiService apiService;
     ListView lista;
     int contador=0;
-    ArrayAdapter<controladores> adapter;
+    AdapterListaEventos adapter;
     private ArrayList<controladores> controladores;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class Ayuda extends AppCompatActivity {
 
         lista = (ListView) findViewById(R.id.listaEventos);
         controladores=new ArrayList<controladores>();
+
 
         cliente= new Retrofit.Builder().baseUrl(ApiService.URL).addConverterFactory(GsonConverterFactory.create()).build();
         apiService=cliente.create(ApiService.class);
@@ -62,13 +64,9 @@ public class Ayuda extends AppCompatActivity {
 
 
 
-
-            controladores.add(0, new controladores(1, "dsd", "sdddd"));
-            adapter = new ArrayAdapter<controladores>(getApplicationContext(),
-                    R.layout.support_simple_spinner_dropdown_item, controladores);
-            lista.setAdapter(adapter);
-
-
+        controladores.add(0, new controladores(1,"dsd","dasd"));
+        adapter= new  AdapterListaEventos(this, controladores);
+        lista.setAdapter(adapter);
 
 
     }

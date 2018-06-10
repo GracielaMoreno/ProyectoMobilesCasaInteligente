@@ -1,9 +1,12 @@
 package Modelos;
 
-public class controladores {
+
+import java.io.Serializable;
+
+public class controladores  implements Serializable{
     private String tipo;
     private int id;
-   private String accion;
+    private String accion;
 
     public controladores( int id,String tipo, String accion) {
         this.id = id;
@@ -37,10 +40,9 @@ public class controladores {
 
     @Override
     public String toString() {
-        return "controladores{" +
-                "tipo='" + tipo + '\'' +
-                ", id=" + id +
-                ", accion='" + accion + '\'' +
-                '}';
+        return "" +
+                "Id= " + id +
+                " Tipo= " + tipo + '\'' +
+                " Accion= " + accion + '\'';
     }
 }
