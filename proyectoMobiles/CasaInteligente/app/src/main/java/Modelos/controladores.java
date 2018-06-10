@@ -5,9 +5,9 @@ public class controladores {
     private int id;
    private String accion;
 
-    public controladores(String tipo, int id, String accion) {
-        this.tipo = tipo;
+    public controladores( int id,String tipo, String accion) {
         this.id = id;
+        this.tipo = tipo;
         this.accion = accion;
     }
 
