@@ -1,8 +1,11 @@
 package com.example.cheli.myapplication;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import BD.AdminSQLiteOpenHelper;
 import Modelos.Persona;
 
 public class MainActivity extends AppCompatActivity {
@@ -73,13 +77,38 @@ public class MainActivity extends AppCompatActivity {
 
     public void pantallaMenus(View view){
 
-        if(nombre.getText().toString().equals("caro") && contrasena.getText().toString().equals("123")){
-            Intent intent = new Intent(getApplicationContext(), Menu.class);
-            startActivity(intent);
-        }else
-        {
-            Toast.makeText(getApplicationContext(),"No registrado", Toast.LENGTH_LONG).show();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "casaInteligente", null, 1);
+
+        SQLiteDatabase bd = admin.getWritableDatabase();
+
+        String dni = nombre.getText().toString();
+
+        Cursor fila = bd.rawQuery("select nombre from usuario where nombre='"+dni+"'", null);
+
+        if (fila.moveToFirst()) {
+
+            do {
+                String nombreBD= fila.getString(0);
+
+                Log.e("nombreBD", nombreBD);
+
+                if(nombreBD.equals(nombre.getText().toString())){
+                    Intent intent = new Intent(getApplicationContext(), Menu.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(this, "No registrado", Toast.LENGTH_SHORT).show();
+
+                }
+            } while(fila.moveToNext());
+
+
+
         }
+
+
+        bd.close();
+
     }
 
 }
