@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
-    android:layout_height="400dp"
+    android:layout_width="400dp"
+    android:layout_height="500dp"
     android:orientation="vertical"
+    android:background="@color/color1"
     android:layout_gravity="center"
     tools:context=".alarma">
 
@@ -30,9 +31,11 @@
 
     <ToggleButton
         android:id="@+id/toggleButton3"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_margin="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:text="ToggleButton" />
 
 </LinearLayout>

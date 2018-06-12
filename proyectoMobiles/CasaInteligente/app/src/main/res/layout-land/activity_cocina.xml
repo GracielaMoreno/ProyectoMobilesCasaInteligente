@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="600dp"
-    android:layout_height="450dp"
+    android:layout_height="320dp"
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/color1"
     tools:context=".cocina">
 
     <LinearLayout

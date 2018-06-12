@@ -6,6 +6,7 @@
     android:layout_height="300dp"
     android:orientation="vertical"
     android:layout_margin="20dp"
+    android:background="@color/color1"
     android:layout_gravity="center"
     tools:context=".alarma">
 
