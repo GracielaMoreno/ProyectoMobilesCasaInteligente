@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="5dp">
 
         <TextView
             android:id="@+id/textView3"
@@ -28,72 +29,65 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="324dp"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
                 android:layout_marginTop="4dp"
                 android:orientation="vertical">
 
 
                 <EditText
                     android:id="@+id/nombreRegistro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
                     android:ems="10"
                     android:hint="Nombre"
                     android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/correoRegistro"
-                    android:layout_width="324dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
                     android:ems="10"
                     android:hint="Correo"
                     android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/contrasena"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
                     android:ems="10"
                     android:hint="Contraseña"
                     android:inputType="textPassword" />
 
                 <EditText
                     android:id="@+id/contrasenaRegistro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
                     android:ems="10"
+                    android:layout_margin="10dp"
                     android:hint="Vuelva a ingresar la contraseña"
                     android:inputType="textPassword" />
 
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="pantallaMenu"
+                    android:text="Registar" />
             </LinearLayout>
 
         </LinearLayout>
 
-
-        .....
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="4dp">
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:onClick="pantallaMenu"
-            android:text="Registar" />
     </LinearLayout>
 
 </LinearLayout>
