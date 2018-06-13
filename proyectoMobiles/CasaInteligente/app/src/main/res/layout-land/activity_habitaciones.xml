@@ -79,6 +79,8 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:gravity="center"
+                    android:textOff="Apagado"
+                    android:textOn="Encendido"
                     android:text="ToggleButton" />
             </LinearLayout>
 
@@ -127,6 +129,8 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:gravity="center"
+                    android:textOff="Cerrada"
+                    android:textOn="Abierta"
                     android:text="ToggleButton" />
             </LinearLayout>
 

@@ -44,6 +44,8 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:gravity="center"
+            android:textOff="Desactivada"
+            android:textOn="Activada"
             android:text="ToggleButton" />
     </LinearLayout>
 </LinearLayout>

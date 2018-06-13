@@ -2,15 +2,37 @@ package com.example.cheli.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.RadioGroup;
+import android.widget.ToggleButton;
 
-public class cocina extends AppCompatActivity {
+public class cocina extends AppCompatActivity{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cocina);
+        ToggleButton toggleButton=(ToggleButton)findViewById(R.id.toggleButtonFoco);
+
+        final ImageView imageView=(ImageView)findViewById(R.id.imageFoco);
+
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked){
+                    Log.e("e","checked"+checked);
+                    imageView.setImageResource(R.drawable.alarma1);
+
+                }else{
+                    imageView.setImageResource(R.drawable.foco);
+                }
+            }
+        });
 
     }
 
@@ -68,6 +90,7 @@ public class cocina extends AppCompatActivity {
         popupMenu.show();
     }
     }
+
 
 }
 
