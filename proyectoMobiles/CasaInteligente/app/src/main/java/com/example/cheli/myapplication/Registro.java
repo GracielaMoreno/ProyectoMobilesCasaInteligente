@@ -34,24 +34,30 @@ public class Registro extends AppCompatActivity {
         SQLiteDatabase bd = admin.getWritableDatabase();
         ContentValues registro = new ContentValues();
 
-        if(contrasena.getText().toString().equals(verificacion.getText().toString())){
-            Persona persona = new Persona(nombre.getText().toString(), correo.getText().toString(), contrasena.getText().toString());
-            registro.put("nombre", nombre.getText().toString());
-            registro.put("correo", correo.getText().toString());
-            registro.put("contrasena", contrasena.getText().toString());
-            bd.insert("usuario", null, registro);
-            bd.close();
+        if(contrasena.getText().toString().equals("") && verificacion.getText().toString().equals("")){
+            Toast.makeText(this, "Ingrese sus datos", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(getApplicationContext(), Menu.class);
-            startActivity(intent);
+        }else{
+            if(contrasena.getText().toString().equals(verificacion.getText().toString())){
+                Persona persona = new Persona(nombre.getText().toString(), correo.getText().toString(), contrasena.getText().toString());
+                registro.put("nombre", nombre.getText().toString());
+                registro.put("correo", correo.getText().toString());
+                registro.put("contrasena", contrasena.getText().toString());
+                bd.insert("usuario", null, registro);
+                bd.close();
 
-            Toast.makeText(this, "Datos del usuario cargados", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                startActivity(intent);
 
+                Toast.makeText(this, "Datos del usuario cargados", Toast.LENGTH_SHORT).show();
+
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"No coincide la contraseña", Toast.LENGTH_LONG).show();
+
+            }
         }
-        else{
-            Toast.makeText(getApplicationContext(),"No coincide la contraseña", Toast.LENGTH_LONG).show();
 
-        }
 
 
     }

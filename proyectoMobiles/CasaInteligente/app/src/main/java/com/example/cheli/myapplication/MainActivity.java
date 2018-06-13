@@ -85,29 +85,38 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor fila = bd.rawQuery("select nombre from usuario where nombre='"+dni+"'", null);
 
-        if (fila.moveToFirst()) {
+        if(nombre.getText().toString().equals("")){
 
-            do {
-                String nombreBD= fila.getString(0);
+           Toast.makeText(getApplicationContext(),"Ingrese los datos",Toast.LENGTH_LONG).show();
 
-                Log.e("nombreBD", nombreBD);
+        }
+        else {
+            if (fila.moveToFirst()) {
 
-                if(nombreBD.equals(nombre.getText().toString())){
-                    Intent intent = new Intent(getApplicationContext(), Menu.class);
-                    startActivity(intent);
-                }
-                else{
-                    Toast.makeText(this, "No registrado", Toast.LENGTH_SHORT).show();
+                do {
+                    String nombreBD= fila.getString(0);
 
-                }
-            } while(fila.moveToNext());
+                    Log.e("nombreBD", nombreBD);
+
+                    if(nombreBD.equals(nombre.getText().toString())){
+                        Intent intent = new Intent(getApplicationContext(), Menu.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(this, "No registrado", Toast.LENGTH_SHORT).show();
+
+                    }
+                } while(fila.moveToNext());
 
 
 
+            }
+
+
+            bd.close();
         }
 
 
-        bd.close();
 
     }
     public void pantallaRegistro(View view){

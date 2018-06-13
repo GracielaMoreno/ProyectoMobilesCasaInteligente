@@ -34,6 +34,7 @@ public class Ayuda extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayuda);
+        setTitle("Registro de Eventos");
 
         lista = (ListView) findViewById(R.id.listaEventos);
         controladores=new ArrayList<controladores>();
