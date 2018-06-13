@@ -34,7 +34,8 @@ public class Registro extends AppCompatActivity {
         SQLiteDatabase bd = admin.getWritableDatabase();
         ContentValues registro = new ContentValues();
 
-        if(contrasena.getText().toString().equals("") && verificacion.getText().toString().equals("")){
+        if(contrasena.getText().toString().equals("") && verificacion.getText().toString().equals("") && correo.getText().toString().equals("") &&
+                nombre.getText().toString().equals("")){
             Toast.makeText(this, "Ingrese sus datos", Toast.LENGTH_SHORT).show();
 
         }else{

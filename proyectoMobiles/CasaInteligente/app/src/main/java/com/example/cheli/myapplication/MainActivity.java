@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor fila = bd.rawQuery("select nombre from usuario where nombre='"+dni+"'", null);
 
-        if(nombre.getText().toString().equals("")){
+        if(nombre.getText().toString().equals("") && contrasena.getText().toString().equals("")){
 
            Toast.makeText(getApplicationContext(),"Ingrese los datos",Toast.LENGTH_LONG).show();
 
