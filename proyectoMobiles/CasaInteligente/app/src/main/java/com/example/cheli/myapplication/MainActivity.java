@@ -110,5 +110,8 @@ public class MainActivity extends AppCompatActivity {
         bd.close();
 
     }
-
+    public void pantallaRegistro(View view){
+        Intent intent = new Intent(getApplicationContext(), Registro.class);
+        startActivity(intent);
+    }
 }

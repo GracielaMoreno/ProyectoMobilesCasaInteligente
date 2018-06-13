@@ -66,18 +66,31 @@
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/logeogmail"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/buttonIngresar"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="10dp"
             android:onClick="pantallaMenus"
             android:text="Iniciar Sesion" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Registro"
+            android:onClick="pantallaRegistro"
+            />
     </LinearLayout>
 </LinearLayout>

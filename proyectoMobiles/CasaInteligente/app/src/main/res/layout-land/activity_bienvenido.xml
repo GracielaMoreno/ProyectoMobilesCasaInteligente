@@ -6,67 +6,36 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color1"
     android:layout_margin="2dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
         android:layout_marginTop="2dp"
         android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@drawable/gatofondo"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="2dp"
-            android:text="Bienvenido"
-            android:textColor="@color/colorAccent"
-            android:textSize="36sp"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="8dp" />
-
-        <LinearLayout
-            android:layout_width="480dp"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="150dp"
-                android:layout_height="75dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="10dp"
-                android:onClick="pantallaIngreso"
-                android:text="Ingreso"
-                tools:layout_editor_absoluteX="284dp"
-                tools:layout_editor_absoluteY="123dp" />
+            app:srcCompat="@drawable/titulorosa" />
 
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="160dp"
-                android:layout_height="133dp"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="160dp"
+            android:layout_height="133dp"
 
-                app:srcCompat="@drawable/logo"
-                tools:layout_editor_absoluteX="394dp"
-                tools:layout_editor_absoluteY="104dp" />
+            app:srcCompat="@drawable/logoredodondo"
+            tools:layout_editor_absoluteX="394dp"
+            tools:layout_editor_absoluteY="104dp" />
 
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="150dp"
-                android:layout_height="75dp"
-                android:layout_margin="10dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="4dp"
-                android:onClick="pantallaRegistro"
-                android:text="Registro"
-                tools:layout_editor_absoluteX="51dp"
-                tools:layout_editor_absoluteY="121dp" />
-        </LinearLayout>
+
+
 
     </LinearLayout>
 </LinearLayout>
