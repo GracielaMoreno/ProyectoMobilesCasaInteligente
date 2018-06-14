@@ -11,9 +11,7 @@
         android:label="Intelligent Home C Y G"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat"
-        android:largeHeap="true"
-        android:hardwareAccelerated="false">
+        android:theme="@style/Theme.AppCompat">
         <activity android:name=".bienvenido">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

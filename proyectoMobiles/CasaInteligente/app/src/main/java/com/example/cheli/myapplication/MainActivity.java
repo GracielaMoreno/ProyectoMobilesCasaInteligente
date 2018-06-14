@@ -60,86 +60,81 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == CODERC) {
+
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
             if (result.isSuccess()) {
+
                 GoogleSignInAccount acc = result.getSignInAccount();
+
                 Intent intent = new Intent(getApplicationContext(), Menu.class);
+
                 Persona persona = new Persona(acc.getDisplayName(), acc.getEmail(), "+++");
+
                 startActivity(intent);
 
+
+
             } else {
+
                 Toast.makeText(this, "Error en ingreso con GMAIl", Toast.LENGTH_LONG).show();
 
 
+
+
+
             }
+
         }
+
     }
 
-    public void pantallaMenus(View view){
 
+
+    public void pantallaMenus(View view){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "casaInteligente", null, 1);
 
         SQLiteDatabase bd = admin.getWritableDatabase();
-
         String dni = nombre.getText().toString();
-
 
         if(nombre.getText().toString().equals("") || contrasena.getText().toString().equals("")){
 
-           Toast.makeText(getApplicationContext(),"Ingrese los datos",Toast.LENGTH_LONG).show();
-
+            Toast.makeText(getApplicationContext(),"Ingrese los datos",Toast.LENGTH_LONG).show();
         }
         else {
             Cursor fila = bd.rawQuery("select nombre, contrasena from usuario where nombre='"+dni+"'", null);
-
             if (fila.moveToFirst()) {
 
-               do {
+                do {
                     String nombreBD= fila.getString(0);
                     String contBD= fila.getString(1);
-
                     boolean existe=(nombreBD.equals(nombre.getText().toString()) && contBD.equals(contrasena.getText().toString()));
-
                     if(existe){
-
-
-                    if(nombreBD.equals(nombre.getText().toString())){
-                        Log.e("e", "sis existo");
-                        Intent intent = new Intent(getApplicationContext(), Menu.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "No registrado", Toast.LENGTH_LONG).show();
-
-                    }
-               } while(fila.moveToNext());
-
                         Intent intent = new Intent(getApplicationContext(), Menu.class);
                         startActivity(intent);
                         nombre.setText("");
                         contrasena.setText("");
-                    }else{
+
+                    }else {
 
                         Toast.makeText(getApplicationContext(), "No registrado", Toast.LENGTH_LONG).show();
-
                     }
-
 
                 } while(fila.moveToNext());
 
-
-
-
             }else{
+
                 Toast.makeText(getApplicationContext(), "No registrado", Toast.LENGTH_LONG).show();
 
             }
 
-
             bd.close();
+
         }
 
+    }
     public void pantallaRegistro(View view){
         Intent intent = new Intent(getApplicationContext(), Registro.class);
         startActivity(intent);
