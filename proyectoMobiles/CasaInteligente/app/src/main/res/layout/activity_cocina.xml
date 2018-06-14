@@ -136,6 +136,7 @@
                     android:gravity="center"
                     android:textOff="Cerrada"
                     android:textOn="Abierta"
+                    android:checked="true"
                     android:text="ToggleButton" />
             </LinearLayout>
 

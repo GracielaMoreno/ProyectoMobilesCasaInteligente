@@ -50,7 +50,7 @@ public class Registro extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Menu.class);
                 startActivity(intent);
 
-                Toast.makeText(this, "Datos del usuario cargados", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Datos del usuario cargados", Toast.LENGTH_LONG).show();
 
             }
             else{

@@ -2,8 +2,12 @@ package com.example.cheli.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.ToggleButton;
 
 public class habitaciones extends AppCompatActivity {
 
@@ -11,6 +15,35 @@ public class habitaciones extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habitaciones);
+        ToggleButton toggleButton=(ToggleButton)findViewById(R.id.toggleButtonPuerta);
+        ToggleButton toggleButton1=(ToggleButton)findViewById(R.id.toggleButtonhabfoto);
+        final ImageView imageView1=(ImageView)findViewById(R.id.imageViewPuertaHab);
+        final ImageView imageView =(ImageView)findViewById(R.id.imageViewhaboitacionfoco);
+
+        toggleButton1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked){
+                    Log.e("e","checked"+checked);
+                    imageView.setImageResource(R.drawable.foco);
+
+                }else{
+                    imageView.setImageResource(R.drawable.focooff2);
+                }
+            }
+        });
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked){
+                    Log.e("e","checked"+checked);
+                    imageView1.setImageResource(R.drawable.puerta);
+
+                }else{
+                    imageView1.setImageResource(R.drawable.puertaabierta);
+                }
+            }
+        });
     }
 
     public void abrirMenuFocoHabitacion(View view){{

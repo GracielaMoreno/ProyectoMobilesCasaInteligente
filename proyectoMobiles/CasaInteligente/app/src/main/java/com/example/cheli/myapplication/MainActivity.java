@@ -93,20 +93,21 @@ public class MainActivity extends AppCompatActivity {
         else {
             if (fila.moveToFirst()) {
 
-                do {
+               do {
                     String nombreBD= fila.getString(0);
 
                     Log.e("nombreBD", nombreBD);
 
                     if(nombreBD.equals(nombre.getText().toString())){
+                        Log.e("e", "sis existo");
                         Intent intent = new Intent(getApplicationContext(), Menu.class);
                         startActivity(intent);
                     }
-                    else{
-                        Toast.makeText(this, "No registrado", Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText(getApplicationContext(), "No registrado", Toast.LENGTH_LONG).show();
 
                     }
-                } while(fila.moveToNext());
+               } while(fila.moveToNext());
 
 
 

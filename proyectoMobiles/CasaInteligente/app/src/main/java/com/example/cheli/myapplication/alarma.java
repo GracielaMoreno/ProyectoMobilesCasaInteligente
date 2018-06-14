@@ -5,8 +5,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class alarma extends AppCompatActivity {
 
@@ -14,6 +17,19 @@ public class alarma extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarma);
+       final ImageView imageView = (ImageView)findViewById(R.id.imageView9);
+       ToggleButton toggleButton = (ToggleButton)findViewById(R.id.toggleButton3);
+       toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+           @Override
+           public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+               if(checked){
+                   imageView.setImageResource(R.drawable.alarma);
+               }else{
+                imageView.setImageResource(R.drawable.alarma2);
+               }
+           }
+       });
+
     }
 
     public void abrirMenuAlarma(View view){{

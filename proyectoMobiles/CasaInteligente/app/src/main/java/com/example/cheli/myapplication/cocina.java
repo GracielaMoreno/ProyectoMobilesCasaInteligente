@@ -18,18 +18,30 @@ public class cocina extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cocina);
         ToggleButton toggleButton=(ToggleButton)findViewById(R.id.toggleButtonFoco);
-
+        ToggleButton toggleButton2=(ToggleButton)findViewById(R.id.toggleButton2);
         final ImageView imageView=(ImageView)findViewById(R.id.imageFoco);
-
+        final ImageView imageView2=(ImageView)findViewById(R.id.imageCortina);
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
                     Log.e("e","checked"+checked);
-                    imageView.setImageResource(R.drawable.alarma1);
+                    imageView.setImageResource(R.drawable.foco);
 
                 }else{
-                    imageView.setImageResource(R.drawable.foco);
+                    imageView.setImageResource(R.drawable.focooff2);
+                }
+            }
+        });
+        toggleButton2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked){
+                    Log.e("e","checked"+checked);
+                    imageView2.setImageResource(R.drawable.cortina);
+
+                }else{
+                    imageView2.setImageResource(R.drawable.persiana2);
                 }
             }
         });
