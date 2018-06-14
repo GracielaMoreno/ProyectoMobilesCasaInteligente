@@ -19,6 +19,7 @@ public class Registro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        setTitle("Registro");
 
         nombre=(EditText)findViewById(R.id.nombreRegistro);
         correo=(EditText)findViewById(R.id.correoRegistro);

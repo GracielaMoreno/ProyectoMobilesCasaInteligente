@@ -14,6 +14,7 @@ public class alarma extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarma);
+        setTitle("Alarma");
     }
 
     public void abrirMenuAlarma(View view){{

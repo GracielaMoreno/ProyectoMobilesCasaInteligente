@@ -17,6 +17,7 @@ public class cocina extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cocina);
+        setTitle("Cocina");
         ToggleButton toggleButton=(ToggleButton)findViewById(R.id.toggleButtonFoco);
 
         final ImageView imageView=(ImageView)findViewById(R.id.imageFoco);
