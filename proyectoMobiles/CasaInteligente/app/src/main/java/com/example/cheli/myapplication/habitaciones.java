@@ -15,6 +15,7 @@ public class habitaciones extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habitaciones);
+
         ToggleButton toggleButton=(ToggleButton)findViewById(R.id.toggleButtonPuerta);
         ToggleButton toggleButton1=(ToggleButton)findViewById(R.id.toggleButtonhabfoto);
         final ImageView imageView1=(ImageView)findViewById(R.id.imageViewPuertaHab);
@@ -44,6 +45,9 @@ public class habitaciones extends AppCompatActivity {
                 }
             }
         });
+
+        setTitle("Habitacion");
+
     }
 
     public void abrirMenuFocoHabitacion(View view){{

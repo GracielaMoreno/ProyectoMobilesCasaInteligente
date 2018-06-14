@@ -17,6 +17,7 @@ public class alarma extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarma);
+
        final ImageView imageView = (ImageView)findViewById(R.id.imageView9);
        ToggleButton toggleButton = (ToggleButton)findViewById(R.id.toggleButton3);
        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -29,6 +30,9 @@ public class alarma extends AppCompatActivity {
                }
            }
        });
+
+
+        setTitle("Alarma");
 
     }
 

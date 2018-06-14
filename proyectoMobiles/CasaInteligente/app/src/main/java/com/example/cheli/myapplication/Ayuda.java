@@ -65,7 +65,7 @@ public class Ayuda extends AppCompatActivity {
 
 
 
-        controladores.add(0, new controladores(1,"dsd","dasd"));
+        controladores.add(0, new controladores(0,"alarma","desactivada"));
         adapter= new  AdapterListaEventos(this, controladores);
         lista.setAdapter(adapter);
 

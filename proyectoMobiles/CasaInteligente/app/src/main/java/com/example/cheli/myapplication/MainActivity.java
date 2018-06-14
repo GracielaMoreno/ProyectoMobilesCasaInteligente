@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Inicio");
 
         SignInButton botongoogle = (SignInButton) findViewById(R.id.logeogmail);
         botongoogle.setOnClickListener(new View.OnClickListener() {
@@ -83,20 +84,25 @@ public class MainActivity extends AppCompatActivity {
 
         String dni = nombre.getText().toString();
 
-        Cursor fila = bd.rawQuery("select nombre from usuario where nombre='"+dni+"'", null);
 
-        if(nombre.getText().toString().equals("") && contrasena.getText().toString().equals("")){
+        if(nombre.getText().toString().equals("") || contrasena.getText().toString().equals("")){
 
            Toast.makeText(getApplicationContext(),"Ingrese los datos",Toast.LENGTH_LONG).show();
 
         }
         else {
+            Cursor fila = bd.rawQuery("select nombre, contrasena from usuario where nombre='"+dni+"'", null);
+
             if (fila.moveToFirst()) {
 
                do {
                     String nombreBD= fila.getString(0);
+                    String contBD= fila.getString(1);
 
-                    Log.e("nombreBD", nombreBD);
+                    boolean existe=(nombreBD.equals(nombre.getText().toString()) && contBD.equals(contrasena.getText().toString()));
+
+                    if(existe){
+
 
                     if(nombreBD.equals(nombre.getText().toString())){
                         Log.e("e", "sis existo");
@@ -109,7 +115,24 @@ public class MainActivity extends AppCompatActivity {
                     }
                } while(fila.moveToNext());
 
+                        Intent intent = new Intent(getApplicationContext(), Menu.class);
+                        startActivity(intent);
+                        nombre.setText("");
+                        contrasena.setText("");
+                    }else{
 
+                        Toast.makeText(getApplicationContext(), "No registrado", Toast.LENGTH_LONG).show();
+
+                    }
+
+
+                } while(fila.moveToNext());
+
+
+
+
+            }else{
+                Toast.makeText(getApplicationContext(), "No registrado", Toast.LENGTH_LONG).show();
 
             }
 
@@ -117,11 +140,10 @@ public class MainActivity extends AppCompatActivity {
             bd.close();
         }
 
-
-
-    }
     public void pantallaRegistro(View view){
         Intent intent = new Intent(getApplicationContext(), Registro.class);
         startActivity(intent);
     }
+
+
 }

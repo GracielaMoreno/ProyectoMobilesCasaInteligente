@@ -1,9 +1,13 @@
 package BD;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import Modelos.Persona;
 
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
@@ -30,5 +34,6 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("create table usuario(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre text, correo text, contrasena text)");
 
     }
+
 
 }

@@ -16,6 +16,7 @@ public class sala extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sala);
+
         ToggleButton toggleButton1=(ToggleButton)findViewById(R.id.toggleButtonSalaPuerta);
         ToggleButton toggleButton= (ToggleButton)findViewById(R.id.toggleButtonSalaFoco);
         final ImageView imageView = (ImageView)findViewById(R.id.imageViewSalaFoCo);
@@ -45,6 +46,9 @@ public class sala extends AppCompatActivity {
                 }
             }
         });
+
+        setTitle("Sala");
+
     }
 
     public void abrirMenuFocoSala(View view){{

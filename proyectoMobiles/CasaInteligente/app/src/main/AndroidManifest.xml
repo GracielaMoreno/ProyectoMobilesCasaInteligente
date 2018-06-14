@@ -5,6 +5,8 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:icon="@drawable/logo2"
         android:label="Intelligent Home C Y G"
         android:roundIcon="@drawable/logo"
