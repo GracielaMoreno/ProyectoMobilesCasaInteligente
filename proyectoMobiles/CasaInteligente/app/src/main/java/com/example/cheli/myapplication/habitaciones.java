@@ -38,10 +38,10 @@ public class habitaciones extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
                     Log.e("e","checked"+checked);
-                    imageView1.setImageResource(R.drawable.puerta);
+                    imageView1.setImageResource(R.drawable.puertaabierta);
 
                 }else{
-                    imageView1.setImageResource(R.drawable.puertaabierta);
+                    imageView1.setImageResource(R.drawable.puerta);
                 }
             }
         });
