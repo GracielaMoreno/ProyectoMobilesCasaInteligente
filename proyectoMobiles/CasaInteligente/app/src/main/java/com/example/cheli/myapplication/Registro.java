@@ -41,14 +41,19 @@ public class Registro extends AppCompatActivity {
         }else{
             if(contrasena.getText().toString().equals(verificacion.getText().toString())){
                 Persona persona = new Persona(nombre.getText().toString(), correo.getText().toString(), contrasena.getText().toString());
-                registro.put("nombre", nombre.getText().toString());
-                registro.put("correo", correo.getText().toString());
-                registro.put("contrasena", contrasena.getText().toString());
+                registro.put("nombre", persona.getNombre());
+                registro.put("correo",persona.getCorreo());
+                registro.put("contrasena", persona.getContrasena());
                 bd.insert("usuario", null, registro);
                 bd.close();
 
                 Intent intent = new Intent(getApplicationContext(), Menu.class);
                 startActivity(intent);
+
+                nombre.setText("");
+                correo.setText("");
+                contrasena.setText("");
+                verificacion.setText("");
 
                 Toast.makeText(this, "Datos del usuario cargados", Toast.LENGTH_SHORT).show();
 

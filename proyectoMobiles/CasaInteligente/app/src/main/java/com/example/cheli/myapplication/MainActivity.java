@@ -83,32 +83,42 @@ public class MainActivity extends AppCompatActivity {
 
         String dni = nombre.getText().toString();
 
-        Cursor fila = bd.rawQuery("select nombre from usuario where nombre='"+dni+"'", null);
 
-        if(nombre.getText().toString().equals("") && contrasena.getText().toString().equals("")){
+        if(nombre.getText().toString().equals("") || contrasena.getText().toString().equals("")){
 
            Toast.makeText(getApplicationContext(),"Ingrese los datos",Toast.LENGTH_LONG).show();
 
         }
         else {
+            Cursor fila = bd.rawQuery("select nombre, contrasena from usuario where nombre='"+dni+"'", null);
+
             if (fila.moveToFirst()) {
 
                 do {
                     String nombreBD= fila.getString(0);
+                    String contBD= fila.getString(1);
 
-                    Log.e("nombreBD", nombreBD);
+                    boolean existe=(nombreBD.equals(nombre.getText().toString()) && contBD.equals(contrasena.getText().toString()));
 
-                    if(nombreBD.equals(nombre.getText().toString())){
+                    if(existe){
+
                         Intent intent = new Intent(getApplicationContext(), Menu.class);
                         startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(this, "No registrado", Toast.LENGTH_SHORT).show();
+                        nombre.setText("");
+                        contrasena.setText("");
+                    }else {
+
+                        Toast.makeText(getApplicationContext(), "No registrado", Toast.LENGTH_LONG).show();
 
                     }
+
+
                 } while(fila.moveToNext());
 
 
+
+            }else{
+                Toast.makeText(getApplicationContext(), "No registrado", Toast.LENGTH_LONG).show();
 
             }
 
@@ -123,4 +133,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Registro.class);
         startActivity(intent);
     }
+
+
 }
