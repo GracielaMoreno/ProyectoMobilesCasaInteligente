@@ -10,8 +10,18 @@ import android.widget.PopupMenu;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
-public class cocina extends AppCompatActivity{
+import Modelos.id;
+import Service.ApiService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
+public class cocina extends AppCompatActivity{
+    ApiService apiService;
+    id idprueba;
+    Retrofit cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +32,48 @@ public class cocina extends AppCompatActivity{
         ToggleButton toggleButton2=(ToggleButton)findViewById(R.id.toggleButton2);
         final ImageView imageView=(ImageView)findViewById(R.id.imageFoco);
         final ImageView imageView2=(ImageView)findViewById(R.id.imageCortina);
+        cliente = new Retrofit.Builder().baseUrl(ApiService.URL).addConverterFactory(GsonConverterFactory.create()).build();
+        apiService = cliente.create(ApiService.class);
+
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
                     Log.e("e","checked"+checked);
                     imageView.setImageResource(R.drawable.foco);
+                    id idp =new id("4");
+                    apiService.createUser(idp).enqueue(new Callback<id>() {
+                        @Override
+                        public void onResponse(Call<id> call, Response<id> response) {
+                            idprueba=response.body();
+
+                            Log.e("bien", idprueba.toString());
+                        }
+
+                        @Override
+                        public void onFailure(Call<id> call, Throwable t) {
+
+                        }
+                    });
+
+
 
                 }else{
                     imageView.setImageResource(R.drawable.focooff2);
+                    id idp =new id("4");
+                    apiService.apagarCocina(idp).enqueue(new Callback<id>() {
+                        @Override
+                        public void onResponse(Call<id> call, Response<id> response) {
+                            idprueba=response.body();
+
+                            Log.e("bien", idprueba.toString());
+                        }
+
+                        @Override
+                        public void onFailure(Call<id> call, Throwable t) {
+
+                        }
+                    });
                 }
             }
         });
@@ -41,8 +84,38 @@ public class cocina extends AppCompatActivity{
                     Log.e("e","checked"+checked);
                     imageView2.setImageResource(R.drawable.cortina);
 
+                    id idp =new id("4");
+                    apiService.encenderMotor(idp).enqueue(new Callback<id>() {
+                        @Override
+                        public void onResponse(Call<id> call, Response<id> response) {
+                            idprueba=response.body();
+
+                            Log.e("bien", idprueba.toString());
+                        }
+
+                        @Override
+                        public void onFailure(Call<id> call, Throwable t) {
+
+                        }
+                    });
+
                 }else{
                     imageView2.setImageResource(R.drawable.persiana2);
+                    id idp =new id("4");
+                    apiService.apagarMotor(idp).enqueue(new Callback<id>() {
+                        @Override
+                        public void onResponse(Call<id> call, Response<id> response) {
+
+
+
+                            Log.e("bien", "");
+                        }
+
+                        @Override
+                        public void onFailure(Call<id> call, Throwable t) {
+
+                        }
+                    });
                 }
             }
         });

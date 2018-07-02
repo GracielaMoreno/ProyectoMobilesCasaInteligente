@@ -5,13 +5,18 @@ import android.os.Bundle;
 
 import Modelos.Persona;
 import Modelos.controladores;
+import Modelos.id;
 import Service.ApiService;
 import retrofit2.Retrofit;
+
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,53 +29,63 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Ayuda extends AppCompatActivity {
 
     List<controladores> listaPersonas;
+    List<Persona> listaP;
     Retrofit cliente;
     ApiService apiService;
     ListView lista;
-    int contador=0;
+    int contador = 0;
     AdapterListaEventos adapter;
     private ArrayList<controladores> controladores;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayuda);
         setTitle("Registro de Eventos");
 
+
         lista = (ListView) findViewById(R.id.listaEventos);
-        controladores=new ArrayList<controladores>();
+        controladores = new ArrayList<controladores>();
+        Log.i("Cliente1", "Cliente Android");
 
 
-        cliente= new Retrofit.Builder().baseUrl(ApiService.URL).addConverterFactory(GsonConverterFactory.create()).build();
-        apiService=cliente.create(ApiService.class);
+        cliente = new Retrofit.Builder().baseUrl(ApiService.URL).addConverterFactory(GsonConverterFactory.create()).build();
+        apiService = cliente.create(ApiService.class);
+        Log.i("Cliente2", "Cliente Android");
+
         apiService.listaUsuarios().enqueue(new Callback<List<controladores>>() {
             @Override
             public void onResponse(Call<List<controladores>> call, Response<List<controladores>> response) {
-                Log.i("Cliente","Cliente Android");
-                if (response.isSuccessful()){
-                    listaPersonas =response.body();
-                    for (controladores controlador: listaPersonas){
+                Log.i("Cliente", "Cliente Android");
+                if (response.isSuccessful()) {
+                    listaPersonas = response.body();
+                    Log.e("error", ""+response.body().toString());
+                    for (controladores controlador : listaPersonas) {
                         contador++;
-                        controladores.add(contador, new controladores(+controlador.getId(),""+controlador.getTipo(),""+controlador.getAccion()));
+                        controladores.add(contador, new controladores(+controlador.getId(), "" + controlador.getTipo(), "" + controlador.getAccion()));
 
                     }
                 }
                 adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onFailure(Call<List<controladores>> call, Throwable t) {
-                Log.i("Error",t.getMessage());
+                Log.i("Error", t.getMessage());
 
             }
         });
 
+        controladores.add(0, new controladores(0, "alarma", "desactivada"));
 
-
-        controladores.add(0, new controladores(0,"alarma","desactivada"));
-        adapter= new  AdapterListaEventos(this, controladores);
+        adapter = new AdapterListaEventos(this, controladores);
         lista.setAdapter(adapter);
 
 
+
+
     }
+
 
 
 }
