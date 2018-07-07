@@ -1,10 +1,13 @@
 package com.example.cheli.myapplication;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import java.io.File;
 
 public class bienvenido extends AppCompatActivity {
     private final int DURACION_SPLASH = 3000; // 3 segundos
@@ -35,4 +38,10 @@ public class bienvenido extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        File folder = new File(Environment.getExternalStorageDirectory().toString()+"/casaInteligente/Files");
+        folder.mkdirs();
+    }
 }

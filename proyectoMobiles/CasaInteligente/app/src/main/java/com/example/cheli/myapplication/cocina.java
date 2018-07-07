@@ -1,5 +1,6 @@
 package com.example.cheli.myapplication;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,8 +9,20 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import Modelos.controladores;
 import Modelos.id;
 import Service.ApiService;
 import retrofit2.Call;
@@ -20,14 +33,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class cocina extends AppCompatActivity{
     ApiService apiService;
-    id idprueba;
     Retrofit cliente;
+    HashMap<String, String> bodyrequest = new HashMap<String, String>();
+    controladores controladores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cocina);
         setTitle("Cocina");
+
         ToggleButton toggleButton=(ToggleButton)findViewById(R.id.toggleButtonFoco);
         ToggleButton toggleButton2=(ToggleButton)findViewById(R.id.toggleButton2);
         final ImageView imageView=(ImageView)findViewById(R.id.imageFoco);
@@ -39,38 +54,45 @@ public class cocina extends AppCompatActivity{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
-                    Log.e("e","checked"+checked);
-                    imageView.setImageResource(R.drawable.foco);
-                    id idp =new id("4");
-                    apiService.createUser(idp).enqueue(new Callback<id>() {
-                        @Override
-                        public void onResponse(Call<id> call, Response<id> response) {
-                            idprueba=response.body();
+                    bodyrequest.put("id", "cocina");
+                    bodyrequest.put("tipo", "foco");
+                    bodyrequest.put("accion", "encender");
 
-                            Log.e("bien", idprueba.toString());
+                    imageView.setImageResource(R.drawable.foco);
+                    apiService.encenderLed(bodyrequest).enqueue(new Callback<controladores>() {
+                        @Override
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
+
                         }
 
                         @Override
-                        public void onFailure(Call<id> call, Throwable t) {
-
+                        public void onFailure(Call<controladores> call, Throwable t) {
+                            Log.e("error", ""+t.getMessage());
                         }
                     });
 
 
-
                 }else{
                     imageView.setImageResource(R.drawable.focooff2);
-                    id idp =new id("4");
-                    apiService.apagarCocina(idp).enqueue(new Callback<id>() {
-                        @Override
-                        public void onResponse(Call<id> call, Response<id> response) {
-                            idprueba=response.body();
+                    bodyrequest.put("id", "cocina");
+                    bodyrequest.put("tipo", "foco");
+                    bodyrequest.put("accion", "apagar");
 
-                            Log.e("bien", idprueba.toString());
+                    apiService.apagarCocina(bodyrequest).enqueue(new Callback<controladores>() {
+                        @Override
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+                            Toast.makeText(cocina.this, ""+response.body().toString(), Toast.LENGTH_SHORT).show();
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
                         }
 
                         @Override
-                        public void onFailure(Call<id> call, Throwable t) {
+                        public void onFailure(Call<controladores> call, Throwable t) {
+
+                            Log.e("error", ""+t.getMessage());
 
                         }
                     });
@@ -81,38 +103,42 @@ public class cocina extends AppCompatActivity{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
-                    Log.e("e","checked"+checked);
                     imageView2.setImageResource(R.drawable.cortina);
+                    bodyrequest.put("id", "cocina");
+                    bodyrequest.put("tipo", "persiana");
+                    bodyrequest.put("accion", "abrir");
 
-                    id idp =new id("4");
-                    apiService.encenderMotor(idp).enqueue(new Callback<id>() {
+                    apiService.encenderMotor(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
-                        public void onResponse(Call<id> call, Response<id> response) {
-                            idprueba=response.body();
-
-                            Log.e("bien", idprueba.toString());
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
                         }
 
                         @Override
-                        public void onFailure(Call<id> call, Throwable t) {
+                        public void onFailure(Call<controladores> call, Throwable t) {
+                            Log.e("error", ""+t.getMessage());
+
 
                         }
                     });
 
                 }else{
                     imageView2.setImageResource(R.drawable.persiana2);
-                    id idp =new id("4");
-                    apiService.apagarMotor(idp).enqueue(new Callback<id>() {
+                    bodyrequest.put("id", "cocina");
+                    bodyrequest.put("tipo", "persiana");
+                    bodyrequest.put("accion", "cerrar");
+                    apiService.apagarMotor(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
-                        public void onResponse(Call<id> call, Response<id> response) {
-
-
-
-                            Log.e("bien", "");
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
                         }
 
                         @Override
-                        public void onFailure(Call<id> call, Throwable t) {
+                        public void onFailure(Call<controladores> call, Throwable t) {
+                            Log.e("error", ""+t.getMessage());
+
 
                         }
                     });
@@ -122,60 +148,6 @@ public class cocina extends AppCompatActivity{
 
     }
 
-
-    public void abrirMenuFoco(View view){{
-
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-
-                switch (item.getItemId()) {
-
-                    case R.id.apagarFocoCocina:
-                        return false;
-
-                    case R.id.encenderFocoCocina:
-                        return true;
-
-                    default:
-                        return false;
-                }
-
-            }
-            });
-
-                popupMenu.inflate(R.menu.menu_foco_cocina);
-                popupMenu.show();
-        }
-    }
-
-    public void abrirMenuCortina(View view){{
-
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-
-                switch (item.getItemId()) {
-
-                    case R.id.abrirCortinaCocina:
-                        return false;
-
-                    case R.id.cerrarCortinaCocina:
-                        return true;
-
-                    default:
-                        return false;
-                }
-
-            }
-        });
-
-        popupMenu.inflate(R.menu.menu_cortina);
-        popupMenu.show();
-    }
-    }
 
 
 }

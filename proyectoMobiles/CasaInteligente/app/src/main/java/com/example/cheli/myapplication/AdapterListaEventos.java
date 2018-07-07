@@ -63,7 +63,8 @@ public class AdapterListaEventos extends BaseAdapter {
         controladores dir = items.get(position);
 
         title=(TextView) v.findViewById(R.id.titulo);
-        title.setText(" "+String.valueOf(dir.getId()));
+
+        title.setText("Lugar: "+String.valueOf(dir.getId()));
 
         descripcion = (TextView) v.findViewById(R.id.controladorDescripcion);
         descripcion.setText("Tipo: "+dir.getTipo());

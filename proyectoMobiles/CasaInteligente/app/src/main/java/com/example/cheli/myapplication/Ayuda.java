@@ -46,23 +46,19 @@ public class Ayuda extends AppCompatActivity {
 
         lista = (ListView) findViewById(R.id.listaEventos);
         controladores = new ArrayList<controladores>();
-        Log.i("Cliente1", "Cliente Android");
-
 
         cliente = new Retrofit.Builder().baseUrl(ApiService.URL).addConverterFactory(GsonConverterFactory.create()).build();
         apiService = cliente.create(ApiService.class);
-        Log.i("Cliente2", "Cliente Android");
 
         apiService.listaUsuarios().enqueue(new Callback<List<controladores>>() {
             @Override
             public void onResponse(Call<List<controladores>> call, Response<List<controladores>> response) {
-                Log.i("Cliente", "Cliente Android");
                 if (response.isSuccessful()) {
                     listaPersonas = response.body();
                     Log.e("error", ""+response.body().toString());
                     for (controladores controlador : listaPersonas) {
                         contador++;
-                        controladores.add(contador, new controladores(+controlador.getId(), "" + controlador.getTipo(), "" + controlador.getAccion()));
+                        controladores.add(contador, new controladores(""+ controlador.getTipo(), "" +controlador.getId(), ""+ controlador.getAccion()));
 
                     }
                 }
@@ -76,7 +72,7 @@ public class Ayuda extends AppCompatActivity {
             }
         });
 
-        controladores.add(0, new controladores(0, "alarma", "desactivada"));
+        controladores.add(0, new controladores("foco", "cocina", "desactivada"));
 
         adapter = new AdapterListaEventos(this, controladores);
         lista.setAdapter(adapter);

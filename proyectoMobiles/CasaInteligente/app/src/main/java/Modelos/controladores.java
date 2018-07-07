@@ -5,12 +5,12 @@ import java.io.Serializable;
 
 public class controladores  implements Serializable{
     private String tipo;
-    private int id;
+    private String id;
     private String accion;
 
-    public controladores( int id,String tipo, String accion) {
-        this.id = id;
+    public controladores(String tipo, String id, String accion) {
         this.tipo = tipo;
+        this.id = id;
         this.accion = accion;
     }
 
@@ -22,11 +22,11 @@ public class controladores  implements Serializable{
         this.tipo = tipo;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -40,9 +40,10 @@ public class controladores  implements Serializable{
 
     @Override
     public String toString() {
-        return "" +
-                "Id= " + id +
-                " Tipo= " + tipo + '\'' +
-                " Accion= " + accion + '\'';
+        return "controladores{" +
+                "tipo='" + tipo + '\'' +
+                ", id='" + id + '\'' +
+                ", accion='" + accion + '\'' +
+                '}';
     }
 }

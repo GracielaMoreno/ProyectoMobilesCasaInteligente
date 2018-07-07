@@ -2,12 +2,13 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight">
 
     <TextView
         android:id="@+id/controladorDescripcion"
-        android:layout_width="255dp"
+        android:layout_width="213dp"
         android:layout_height="31dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
@@ -24,17 +25,16 @@
 
     <TextView
         android:id="@+id/titulo"
-        android:layout_width="?android:attr/listPreferredItemHeight"
+        android:layout_width="105dp"
         android:layout_height="?android:attr/listPreferredItemHeight"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/icono"
         android:singleLine="true"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/common_action_bar_splitter" />
+        android:text="Cocina" />
 
     <TextView
         android:id="@+id/accionControlador"
-        android:layout_width="256dp"
+        android:layout_width="214dp"
         android:layout_height="33dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
