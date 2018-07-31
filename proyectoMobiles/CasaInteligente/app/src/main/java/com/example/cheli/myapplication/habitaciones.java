@@ -7,9 +7,24 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.HashMap;
+
+import Modelos.controladores;
+import Service.ApiService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class habitaciones extends AppCompatActivity {
+    HashMap<String, String> bodyrequest = new HashMap<String, String>();
+    ApiService apiService;
+    Retrofit cliente;
+    Modelos.controladores controladores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +36,55 @@ public class habitaciones extends AppCompatActivity {
         final ImageView imageView1=(ImageView)findViewById(R.id.imageViewPuertaHab);
         final ImageView imageView =(ImageView)findViewById(R.id.imageViewhaboitacionfoco);
 
+        cliente = new Retrofit.Builder().baseUrl(ApiService.URL).addConverterFactory(GsonConverterFactory.create()).build();
+        apiService = cliente.create(ApiService.class);
         toggleButton1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
-                    Log.e("e","checked"+checked);
+                    bodyrequest.put("id", "dormitorio");
+                    bodyrequest.put("tipo", "foco");
+                    bodyrequest.put("accion", "encender");
+
                     imageView.setImageResource(R.drawable.foco);
+
+                    apiService.dormitorio(bodyrequest).enqueue(new Callback<controladores>() {
+                        @Override
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<controladores> call, Throwable t) {
+                            Log.e("error", ""+t.getMessage());
+                        }
+                    });
+
 
                 }else{
                     imageView.setImageResource(R.drawable.focooff2);
+                    bodyrequest.put("id", "dormitorio");
+                    bodyrequest.put("tipo", "foco");
+                    bodyrequest.put("accion", "apagar");
+
+                    apiService.dormitorioOff(bodyrequest).enqueue(new Callback<controladores>() {
+                        @Override
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+                            Toast.makeText(habitaciones.this, ""+response.body().toString(), Toast.LENGTH_SHORT).show();
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
+                        }
+
+                        @Override
+                        public void onFailure(Call<controladores> call, Throwable t) {
+
+                            Log.e("error", ""+t.getMessage());
+
+                        }
+                    });
                 }
             }
         });
@@ -50,58 +105,5 @@ public class habitaciones extends AppCompatActivity {
 
     }
 
-    public void abrirMenuFocoHabitacion(View view){{
 
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-
-                switch (item.getItemId()) {
-
-                    case R.id.apagarFocoCocinaHabitacion:
-                        return false;
-
-                    case R.id.encenderFocoHabitacion:
-                        return true;
-
-                    default:
-                        return false;
-                }
-
-            }
-        });
-
-        popupMenu.inflate(R.menu.menu_foco_habitacion);
-        popupMenu.show();
-    }
-    }
-
-
-    public void abrirPuertaHabitacion (View view){{
-
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-
-                switch (item.getItemId()) {
-
-                    case R.id.abrirPuertaHabitacion:
-                        return false;
-
-                    case R.id.cerrarPuertaHabitacion:
-                        return true;
-
-                    default:
-                        return false;
-                }
-
-            }
-        });
-
-        popupMenu.inflate(R.menu.menu_puerta_habitacion);
-        popupMenu.show();
-    }
-    }
 }
