@@ -92,9 +92,43 @@ public class sala extends AppCompatActivity {
                 if(checked){
                     Log.e("e","checked"+checked);
                     imageView1.setImageResource(R.drawable.puertaabierta);
+                    bodyrequest.put("id", "sala");
+                    bodyrequest.put("tipo", "puerta");
+                    bodyrequest.put("accion", "abierta");
+                    apiService.encenderMotorSala(bodyrequest).enqueue(new Callback<controladores>() {
+                        @Override
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<controladores> call, Throwable t) {
+                            Log.e("error", ""+t.getMessage());
+                        }
+                    });
 
                 }else{
                     imageView1.setImageResource(R.drawable.puerta);
+                    bodyrequest.put("id", "sala");
+                    bodyrequest.put("tipo", "foco");
+                    bodyrequest.put("accion", "encender");
+                    apiService.apagarMotorSala(bodyrequest).enqueue(new Callback<controladores>() {
+                        @Override
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<controladores> call, Throwable t) {
+                            Log.e("error", ""+t.getMessage());
+                        }
+                    });
                 }
             }
         });

@@ -125,7 +125,7 @@ public class cocina extends AppCompatActivity{
 
                 }else{
                     imageView2.setImageResource(R.drawable.persiana2);
-                    bodyrequest.put("id", "cocina");
+                   /* bodyrequest.put("id", "cocina");
                     bodyrequest.put("tipo", "persiana");
                     bodyrequest.put("accion", "cerrar");
                     apiService.apagarMotor(bodyrequest).enqueue(new Callback<controladores>() {
@@ -141,7 +141,7 @@ public class cocina extends AppCompatActivity{
 
 
                         }
-                    });
+                    });*/
                 }
             }
         });

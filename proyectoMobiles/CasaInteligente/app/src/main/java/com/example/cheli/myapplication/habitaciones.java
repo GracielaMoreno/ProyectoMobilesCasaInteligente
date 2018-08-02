@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
