@@ -121,8 +121,8 @@ android:orientation="vertical"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:checked="true"
-                android:textOff="Cerrada"
-                android:textOn="Abierta"
+                android:textOff="Abierta"
+                android:textOn="Cerrada"
                 android:text="ToggleButton" />
         </LinearLayout>
     </LinearLayout>

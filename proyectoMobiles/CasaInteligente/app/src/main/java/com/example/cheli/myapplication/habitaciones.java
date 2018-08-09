@@ -47,7 +47,7 @@ public class habitaciones extends AppCompatActivity {
 
                     imageView.setImageResource(R.drawable.foco);
 
-                    apiService.dormitorio(bodyrequest).enqueue(new Callback<controladores>() {
+                    apiService.dormitorioOff(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
                         public void onResponse(Call<controladores> call, Response<controladores> response) {
 
@@ -65,25 +65,24 @@ public class habitaciones extends AppCompatActivity {
 
                 }else{
                     imageView.setImageResource(R.drawable.focooff2);
-                    bodyrequest.put("id", "dormitorio");
+                    bodyrequest.put("id", "sala");
                     bodyrequest.put("tipo", "foco");
-                    bodyrequest.put("accion", "apagar");
-
-                    apiService.dormitorioOff(bodyrequest).enqueue(new Callback<controladores>() {
+                    bodyrequest.put("accion", "encender");
+                    apiService.dormitorio(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
                         public void onResponse(Call<controladores> call, Response<controladores> response) {
-                            Toast.makeText(habitaciones.this, ""+response.body().toString(), Toast.LENGTH_SHORT).show();
+
                             controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
                                     ""+response.body().getAccion());
+
                         }
 
                         @Override
                         public void onFailure(Call<controladores> call, Throwable t) {
-
                             Log.e("error", ""+t.getMessage());
-
                         }
                     });
+
                 }
             }
         });
@@ -93,9 +92,44 @@ public class habitaciones extends AppCompatActivity {
                 if(checked){
                     Log.e("e","checked"+checked);
                     imageView1.setImageResource(R.drawable.puertaabierta);
+                    bodyrequest.put("id", "habitacion");
+                    bodyrequest.put("tipo", "puerta");
+                    bodyrequest.put("accion", "abierta");
+                    apiService.encenderMotorSala(bodyrequest).enqueue(new Callback<controladores>() {
+                        @Override
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<controladores> call, Throwable t) {
+                            Log.e("error", ""+t.getMessage());
+                        }
+                    });
 
                 }else{
-                    imageView1.setImageResource(R.drawable.puerta);
+                    imageView1.setImageResource(R.drawable.puerta2);
+                    bodyrequest.put("id", "habitacion");
+                    bodyrequest.put("tipo", "foco");
+                    bodyrequest.put("accion", "encender");
+                    apiService.apagarMotorSala(bodyrequest).enqueue(new Callback<controladores>() {
+                        @Override
+                        public void onResponse(Call<controladores> call, Response<controladores> response) {
+
+                            controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
+                                    ""+response.body().getAccion());
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<controladores> call, Throwable t) {
+                            Log.e("error", ""+t.getMessage());
+                        }
+                    });
+
                 }
             }
         });

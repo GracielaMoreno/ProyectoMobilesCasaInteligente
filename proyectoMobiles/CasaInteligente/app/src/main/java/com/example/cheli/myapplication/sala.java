@@ -46,7 +46,7 @@ public class sala extends AppCompatActivity {
                     bodyrequest.put("id", "sala");
                     bodyrequest.put("tipo", "foco");
                     bodyrequest.put("accion", "encender");
-                    apiService.sala(bodyrequest).enqueue(new Callback<controladores>() {
+                    apiService.salaOff(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
                         public void onResponse(Call<controladores> call, Response<controladores> response) {
 
@@ -68,7 +68,7 @@ public class sala extends AppCompatActivity {
                     bodyrequest.put("tipo", "foco");
                     bodyrequest.put("accion", "apagar");
 
-                    apiService.salaOff(bodyrequest).enqueue(new Callback<controladores>() {
+                    apiService.sala(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
                         public void onResponse(Call<controladores> call, Response<controladores> response) {
                             Toast.makeText(sala.this, ""+response.body().toString(), Toast.LENGTH_SHORT).show();
@@ -91,7 +91,7 @@ public class sala extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
                     Log.e("e","checked"+checked);
-                    imageView1.setImageResource(R.drawable.puertaabierta);
+                    imageView1.setImageResource(R.drawable.puerta);
                     bodyrequest.put("id", "sala");
                     bodyrequest.put("tipo", "puerta");
                     bodyrequest.put("accion", "abierta");
@@ -111,7 +111,7 @@ public class sala extends AppCompatActivity {
                     });
 
                 }else{
-                    imageView1.setImageResource(R.drawable.puerta);
+                    imageView1.setImageResource(R.drawable.puertaabierta);
                     bodyrequest.put("id", "sala");
                     bodyrequest.put("tipo", "foco");
                     bodyrequest.put("accion", "encender");

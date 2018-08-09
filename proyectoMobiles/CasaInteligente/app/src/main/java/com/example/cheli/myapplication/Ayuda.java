@@ -1,5 +1,8 @@
 package com.example.cheli.myapplication;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -13,7 +16,9 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,47 +46,48 @@ public class Ayuda extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayuda);
+
         setTitle("Registro de Eventos");
 
 
-        lista = (ListView) findViewById(R.id.listaEventos);
-        controladores = new ArrayList<controladores>();
-
-        cliente = new Retrofit.Builder().baseUrl(ApiService.URL).addConverterFactory(GsonConverterFactory.create()).build();
-        apiService = cliente.create(ApiService.class);
-
-        apiService.listaUsuarios().enqueue(new Callback<List<controladores>>() {
-            @Override
-            public void onResponse(Call<List<controladores>> call, Response<List<controladores>> response) {
-                if (response.isSuccessful()) {
-                    listaPersonas = response.body();
-                    Log.e("error", ""+response.body().toString());
-                    for (controladores controlador : listaPersonas) {
-                        contador++;
-                        controladores.add(contador, new controladores(""+ controlador.getTipo(), "" +controlador.getId(), ""+ controlador.getAccion()));
-
-                    }
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<List<controladores>> call, Throwable t) {
-                Log.i("Error", t.getMessage());
-
-            }
-        });
-
-        controladores.add(0, new controladores("foco", "cocina", "desactivada"));
-
-        adapter = new AdapterListaEventos(this, controladores);
-        lista.setAdapter(adapter);
-
-
-
-
+        Ejecutar();
     }
+public void Ejecutar(){
+    lista = (ListView) findViewById(R.id.listaEventos);
+    controladores = new ArrayList<controladores>();
 
+    cliente = new Retrofit.Builder().baseUrl(ApiService.URL).addConverterFactory(GsonConverterFactory.create()).build();
+    apiService = cliente.create(ApiService.class);
+
+    apiService.listaUsuarios().enqueue(new Callback<List<controladores>>() {
+        @Override
+        public void onResponse(Call<List<controladores>> call, Response<List<controladores>> response) {
+            if (response.isSuccessful()) {
+                listaPersonas = response.body();
+                Log.e("error", ""+response.body().toString());
+                for (controladores controlador : listaPersonas) {
+                    contador++;
+                    controladores.add(contador, new controladores(""+ controlador.getTipo(), "" +controlador.getId(), ""+ controlador.getAccion()));
+
+                }
+            }
+            adapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onFailure(Call<List<controladores>> call, Throwable t) {
+            Log.i("Error", t.getMessage());
+
+        }
+    });
+
+    controladores.add(0, new controladores("foco", "cocina", "desactivada"));
+
+    adapter = new AdapterListaEventos(this, controladores);
+    lista.setAdapter(adapter);
+
+
+}
 
 
 }

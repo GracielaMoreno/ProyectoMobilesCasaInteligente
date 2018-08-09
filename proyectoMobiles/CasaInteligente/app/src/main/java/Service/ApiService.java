@@ -15,7 +15,7 @@ import retrofit2.http.POST;
 
 
 public interface ApiService {
-    public static final String URL="http://172.31.104.33:5000";
+    public static final String URL="http://172.29.65.179:5000";
 
     @Headers("Content-Type: application/json")
     @GET("/controladores")
@@ -68,4 +68,21 @@ public interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("/puertaAbiertaSala")
     Call<controladores> apagarMotorSala(@Body Map<String, String> body);
+
+    @Headers("Content-Type: application/json")
+    @POST("/ventanaAbiertaCocina")
+    Call<controladores> encenderMotorCocina(@Body Map<String, String> body);
+
+    @Headers("Content-Type: application/json")
+    @POST("/ventanaCerradaCocina")
+    Call<controladores> apagarMotorCocina(@Body Map<String, String> body);
+
+    @Headers("Content-Type: application/json")
+    @POST("/Advertencia")
+    Call<controladores> sensor(@Body Map<String, String> body);
+
+    @Headers("Content-Type: application/json")
+    @POST("//noAutorizacion")
+    Call<controladores> sensorapagar(@Body Map<String, String> body);
+
 }

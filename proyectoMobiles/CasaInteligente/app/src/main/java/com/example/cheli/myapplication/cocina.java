@@ -59,7 +59,7 @@ public class cocina extends AppCompatActivity{
                     bodyrequest.put("accion", "encender");
 
                     imageView.setImageResource(R.drawable.foco);
-                    apiService.encenderLed(bodyrequest).enqueue(new Callback<controladores>() {
+                    apiService.apagarCocina(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
                         public void onResponse(Call<controladores> call, Response<controladores> response) {
 
@@ -81,7 +81,7 @@ public class cocina extends AppCompatActivity{
                     bodyrequest.put("tipo", "foco");
                     bodyrequest.put("accion", "apagar");
 
-                    apiService.apagarCocina(bodyrequest).enqueue(new Callback<controladores>() {
+                    apiService.encenderLed(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
                         public void onResponse(Call<controladores> call, Response<controladores> response) {
                             Toast.makeText(cocina.this, ""+response.body().toString(), Toast.LENGTH_SHORT).show();
@@ -108,7 +108,7 @@ public class cocina extends AppCompatActivity{
                     bodyrequest.put("tipo", "persiana");
                     bodyrequest.put("accion", "abrir");
 
-                    apiService.encenderMotor(bodyrequest).enqueue(new Callback<controladores>() {
+                    apiService.encenderMotorCocina(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
                         public void onResponse(Call<controladores> call, Response<controladores> response) {
                             controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
@@ -125,10 +125,10 @@ public class cocina extends AppCompatActivity{
 
                 }else{
                     imageView2.setImageResource(R.drawable.persiana2);
-                   /* bodyrequest.put("id", "cocina");
+                    bodyrequest.put("id", "cocina");
                     bodyrequest.put("tipo", "persiana");
                     bodyrequest.put("accion", "cerrar");
-                    apiService.apagarMotor(bodyrequest).enqueue(new Callback<controladores>() {
+                    apiService.apagarMotorCocina(bodyrequest).enqueue(new Callback<controladores>() {
                         @Override
                         public void onResponse(Call<controladores> call, Response<controladores> response) {
                             controladores= new controladores(""+response.body().getTipo(), ""+response.body().getId(),
@@ -141,7 +141,7 @@ public class cocina extends AppCompatActivity{
 
 
                         }
-                    });*/
+                    });
                 }
             }
         });
